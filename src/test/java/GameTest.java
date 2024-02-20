@@ -52,5 +52,21 @@ public class GameTest {
         Game minesweeper = setup();
         minesweeper.updateBoardClick(0,0);
         Assertions.assertTrue(minesweeper.isGameOver(), "game should be over");
+
+        minesweeper = setup();
+        minesweeper.setTile(0,0, true);
+        Assertions.assertEquals(-1, minesweeper.updateBoardClick(0,0), "should return -1 when bomb is clicked");
+        Assertions.assertTrue(minesweeper.isGameOver(), "gameOver should be true");
+        Assertions.assertTrue(minesweeper.isLost(), "lost should be true");
+
+        Game game1 = setup();
+        game1.setTile(0,0, true);
+        game1.placeFlag(0,0, true);
+        Assertions.assertEquals(-1, game1.updateBoardClick(0,0), "should not be able to click on a bomb");
+        game1.updateBoardClick(0,1);
+        Assertions.assertFalse(game1.isLost(), "lost should be false");
+        Assertions.assertTrue(game1.isGameOver(), "game should be over");
+
+
     }
 }

@@ -92,13 +92,13 @@ public class Game {
     //reveal new numbers/empty spaces
     public int updateBoardClick(int r, int c){
         //first check if it's a bomb
-<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        if(gameBoard[r][c].isMine()){</span>
-<span class="nc bnc" id="L96" title="All 2 branches missed.">            if(gameBoard[r][c].isFlag()){</span>
-<span class="nc" id="L97">                return -1;</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        if(gameBoard[r][c].isMine()){</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">            if(gameBoard[r][c].isFlag()){</span>
+<span class="fc" id="L97">                return -1;</span>
             }
-<span class="nc" id="L99">            lost = true;</span>
-<span class="nc" id="L100">            gameOver();</span>
-<span class="nc" id="L101">            return -1;</span>
+<span class="fc" id="L99">            lost = true;</span>
+<span class="fc" id="L100">            gameOver();</span>
+<span class="fc" id="L101">            return -1;</span>
         }else{
 <span class="fc" id="L103">            gameBoard[r][c].setShow(true);</span>
 <span class="fc" id="L104">            ArrayList&lt;Tile&gt; neighbours = new ArrayList&lt;Tile&gt;();</span>
@@ -117,8 +117,8 @@ public class Game {
     public int expand(Tile tile){
 <span class="fc bfc" id="L118" title="All 2 branches covered.">        if(tile.isShow()){</span>
 <span class="fc" id="L119">            return 1;</span>
-<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        }else if(tile.isMine()){</span>
-<span class="nc" id="L121">            return 1;</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        }else if(tile.isMine()){</span>
+<span class="fc" id="L121">            return 1;</span>
 <span class="pc bpc" id="L122" title="1 of 2 branches missed.">        }else if(tile.isFlag()) {</span>
 <span class="nc" id="L123">            return 1;</span>
 <span class="fc bfc" id="L124" title="All 2 branches covered.">        } else if (tile.count&gt;0){</span>
@@ -138,15 +138,15 @@ public class Game {
 
     //Game over! set all squares to x or something - specifically for a loss
     public void gameOver(){
-<span class="nc" id="L141">        gameOver = true;</span>
-<span class="nc bnc" id="L142" title="All 2 branches missed.">        for (int i=0; i&lt; rowSize; i++){</span>
-<span class="nc bnc" id="L143" title="All 2 branches missed.">            for (int j=0; j&lt; colSize; j++){</span>
-<span class="nc" id="L144">                gameBoard[i][j].setMine(true);</span>
-<span class="nc" id="L145">                System.out.print(&quot;\033[1;31m&quot;);</span>
-<span class="nc" id="L146">                gameBoard[i][j].setShow(true);</span>
+<span class="fc" id="L141">        gameOver = true;</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">        for (int i=0; i&lt; rowSize; i++){</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">            for (int j=0; j&lt; colSize; j++){</span>
+<span class="fc" id="L144">                gameBoard[i][j].setMine(true);</span>
+<span class="fc" id="L145">                System.out.print(&quot;\033[1;31m&quot;);</span>
+<span class="fc" id="L146">                gameBoard[i][j].setShow(true);</span>
             }
         }
-<span class="nc" id="L149">    }</span>
+<span class="fc" id="L149">    }</span>
 
     //method to check if you've w
     //win condition: all safe blocks opened
@@ -155,7 +155,7 @@ public class Game {
 <span class="fc bfc" id="L155" title="All 2 branches covered.">        for (int i=0; i&lt; rowSize; i++){</span>
 <span class="fc bfc" id="L156" title="All 2 branches covered.">            for (int j=0; j&lt; colSize; j++){</span>
 <span class="fc" id="L157">                temp = gameBoard[i][j];</span>
-<span class="pc bpc" id="L158" title="1 of 4 branches missed.">                if(!temp.isShow()&amp;&amp;!temp.isMine()){</span>
+<span class="fc bfc" id="L158" title="All 4 branches covered.">                if(!temp.isShow()&amp;&amp;!temp.isMine()){</span>
 <span class="fc" id="L159">                    return false;</span>
                 }
             }
