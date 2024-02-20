@@ -21,26 +21,7 @@ public class Main {
         int diff = Integer.parseInt(input);
 
         Game minesweeper =  new Game(diff);
-        String difficulty = "";
-        switch (diff){
-            case 1 -> {
-                difficulty = "easy";
-            }
-            case 2 -> {
-                difficulty = "intermediate";
-            }
-            case 3 -> {
-                difficulty = "ULTIMATE MINESWEEPER";
-            }
-            case -1 ->{
-                difficulty = "testing mode - for devs only";
-            }
-            default -> {
-                difficulty = "easy";
-            }
-        }
-        System.out.println("You have chosen " + difficulty + ", good luck!\n" +
-                "The coordinates start at 0,0\n");
+        printIntro(diff);
         System.out.println("Which coordinates would you like to begin with?");
         int[] coordinates = new int[2];
         coordinates = coordinates(minesweeper);
@@ -69,6 +50,29 @@ public class Main {
     }
 
 
+    public static String printIntro(int diff){
+        String difficulty = "";
+        switch (diff){
+            case 1 -> {
+                difficulty = "easy";
+            }
+            case 2 -> {
+                difficulty = "intermediate";
+            }
+            case 3 -> {
+                difficulty = "ULTIMATE MINESWEEPER";
+            }
+            case -1 ->{
+                difficulty = "testing mode - for devs only";
+            }
+            default -> {
+                difficulty = "easy";
+            }
+        }
+        System.out.println("You have chosen " + difficulty + ", good luck!\n" +
+                "The coordinates start at 0,0\n");
+        return difficulty;
+    }
 
     public static void get_move(Game minesweeper){
         boolean readMove = false;

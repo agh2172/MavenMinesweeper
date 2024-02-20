@@ -106,8 +106,40 @@ public class GameTest {
         Assertions.assertEquals(0, coordinates[0], "x should be 0");
         Assertions.assertEquals(0, coordinates[1], "y should be 0");
 
-
     }
+
+    @Test
+    public void testIntro(){
+        int difficulty = 1;
+        String diff = Main.printIntro(difficulty);
+        Assertions.assertEquals("easy", diff, "should be easy");
+
+
+        difficulty = 2;
+        diff = Main.printIntro(difficulty);
+        Assertions.assertEquals("intermediate", diff, "should be intermediate");
+
+        difficulty = 3;
+        diff = Main.printIntro(difficulty);
+        Assertions.assertEquals("ULTIMATE MINESWEEPER", diff, "should be ULTIMATE MINESWEEPER");
+
+        difficulty = -1;
+        diff = Main.printIntro(difficulty);
+        Assertions.assertEquals("testing mode - for devs only", diff, "should be testing mode");
+
+        difficulty = 0;
+        diff = Main.printIntro(difficulty);
+        Assertions.assertEquals("easy", diff, "should be default");
+    }
+
+/*    @Test
+    public void testInput(){
+        Game minesweeper = new Game(1);
+
+        provideInput("f\n3\n3\n");
+        Main.get_move(minesweeper);
+        Assertions.assertTrue(minesweeper.getTile(3,3).isFlag(), "should be a flag");
+    }*/
 
 /*    @Test
     public void testOutput(){
