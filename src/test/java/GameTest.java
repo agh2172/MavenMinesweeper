@@ -160,6 +160,17 @@ public class GameTest {
         Main.startGame(minesweeper);
         Assertions.assertFalse(minesweeper.getTile(3,3).isMine(), "cannot be mine at start");
     }
+
+    @Test
+    public void testGetMoveType(){
+        provideInput("f\n");
+        boolean[] vals = Main.getMoveType();
+        boolean placeFlag = vals[0];
+        boolean place = vals[1];
+        boolean cleanTile = vals[2];
+
+        Assertions.assertTrue(placeFlag, "should be placeFlag true");
+    }
 /*    @Test
     public void testInput(){
         Game minesweeper = new Game(1);

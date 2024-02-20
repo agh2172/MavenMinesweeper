@@ -89,101 +89,109 @@ import java.util.Scanner;
     }
 
     public static void get_move(Game minesweeper){
-<span class="nc" id="L92">        boolean readMove = false;</span>
-<span class="nc" id="L93">        boolean placeFlag = false;</span>
-<span class="nc" id="L94">        boolean place = false;</span>
-<span class="nc" id="L95">        boolean cleanTile = false;</span>
+<span class="nc" id="L92">        boolean[] vals = getMoveType();</span>
+<span class="nc" id="L93">        boolean placeFlag = vals[0];</span>
+<span class="nc" id="L94">        boolean place = vals[1];</span>
+<span class="nc" id="L95">        boolean cleanTile = vals[2];</span>
+<span class="nc" id="L96">        int[] coordinates = new int[2];</span>
+<span class="nc" id="L97">        coordinates = coordinates(minesweeper);</span>
+
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        if(placeFlag){</span>
+<span class="nc" id="L100">            minesweeper.placeFlag(coordinates[0], coordinates[1], place);</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">        } else if (cleanTile) {</span>
+<span class="nc" id="L102">            minesweeper.updateBoardClick(coordinates[0], coordinates[1]);</span>
+        }
+
+<span class="nc" id="L105">    }</span>
+
+    public static boolean[] getMoveType(){
+<span class="fc" id="L108">        boolean readMove = false;</span>
+<span class="fc" id="L109">        boolean placeFlag = false;</span>
+<span class="fc" id="L110">        boolean place = false;</span>
+<span class="fc" id="L111">        boolean cleanTile = false;</span>
+
         //Ask if they want to click or place a flag
         //Then either way use the coordinates method to get the coordinates
-<span class="nc bnc" id="L98" title="All 2 branches missed.">        while(!readMove){</span>
-<span class="nc" id="L99">            Scanner reader = new Scanner(System.in);</span>
-<span class="nc" id="L100">            System.out.println(&quot;Would you like to place a flag or clean a tile?\n&quot; +</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        while(!readMove){</span>
+<span class="fc" id="L116">            Scanner reader = new Scanner(System.in);</span>
+<span class="fc" id="L117">            System.out.println(&quot;Would you like to place a flag or clean a tile?\n&quot; +</span>
                     &quot;Enter f or flag to place a flag\n&quot; +
                     &quot;Enter c or clean to clean a tile\n&quot; +
                     &quot;Enter r or remove to remove a flag&quot;);
-<span class="nc" id="L104">            String input = reader.next();</span>
-<span class="nc" id="L105">            input = input.toLowerCase().trim();</span>
-<span class="nc bnc" id="L106" title="All 4 branches missed.">            if(input.equals(&quot;flag&quot;)||input.equals(&quot;f&quot;)){</span>
+<span class="fc" id="L121">            String input = reader.next();</span>
+<span class="fc" id="L122">            input = input.toLowerCase().trim();</span>
+<span class="pc bpc" id="L123" title="2 of 4 branches missed.">            if(input.equals(&quot;flag&quot;)||input.equals(&quot;f&quot;)){</span>
                 //place flag
-<span class="nc" id="L108">                placeFlag =true;</span>
-<span class="nc" id="L109">                readMove = true;</span>
-<span class="nc" id="L110">                place = true;</span>
-<span class="nc bnc" id="L111" title="All 4 branches missed.">            } else if (input.equals(&quot;clean&quot;)||input.equals(&quot;c&quot;)) {</span>
+<span class="fc" id="L125">                placeFlag =true;</span>
+<span class="fc" id="L126">                readMove = true;</span>
+<span class="fc" id="L127">                place = true;</span>
+<span class="nc bnc" id="L128" title="All 4 branches missed.">            } else if (input.equals(&quot;clean&quot;)||input.equals(&quot;c&quot;)) {</span>
                 //clean tile
-<span class="nc" id="L113">                cleanTile =true;</span>
-<span class="nc" id="L114">                readMove = true;</span>
-<span class="nc bnc" id="L115" title="All 4 branches missed.">            } else if (input.equals(&quot;remove&quot;)||input.equals(&quot;r&quot;)) {</span>
-<span class="nc" id="L116">                placeFlag=true;</span>
-<span class="nc" id="L117">                readMove = true;</span>
+<span class="nc" id="L130">                cleanTile =true;</span>
+<span class="nc" id="L131">                readMove = true;</span>
+<span class="nc bnc" id="L132" title="All 4 branches missed.">            } else if (input.equals(&quot;remove&quot;)||input.equals(&quot;r&quot;)) {</span>
+<span class="nc" id="L133">                placeFlag=true;</span>
+<span class="nc" id="L134">                readMove = true;</span>
             }else{
-<span class="nc" id="L119">                System.out.println(&quot;Invalid input, please try again&quot;);</span>
+<span class="nc" id="L136">                System.out.println(&quot;Invalid input, please try again&quot;);</span>
             }
-<span class="nc" id="L121">        }</span>
-
-<span class="nc" id="L123">        int[] coordinates = new int[2];</span>
-<span class="nc" id="L124">        coordinates = coordinates(minesweeper);</span>
-
-<span class="nc bnc" id="L126" title="All 2 branches missed.">        if(placeFlag){</span>
-<span class="nc" id="L127">            minesweeper.placeFlag(coordinates[0], coordinates[1], place);</span>
-<span class="nc bnc" id="L128" title="All 2 branches missed.">        } else if (cleanTile) {</span>
-<span class="nc" id="L129">            minesweeper.updateBoardClick(coordinates[0], coordinates[1]);</span>
-        }
-
-<span class="nc" id="L132">    }</span>
+<span class="fc" id="L138">        }</span>
+<span class="fc" id="L139">        return new boolean[]{placeFlag, place, cleanTile};</span>
+    }
 
 
     //returns int[] with row at [0], and column at [1]
     public static int[] coordinates(Game board){
-<span class="fc" id="L137">        int[] coordinates = new int[2];</span>
+<span class="fc" id="L145">        int[] coordinates = new int[2];</span>
 
         //coordinate Row/Column
-<span class="fc" id="L140">        int cR =-1; //row</span>
-<span class="fc" id="L141">        int cC = -1; //column</span>
+<span class="fc" id="L148">        int cR =-1; //row</span>
+<span class="fc" id="L149">        int cC = -1; //column</span>
 
-<span class="fc" id="L143">        int colSize = board.getColSize();</span>
-<span class="fc" id="L144">        int rowSize = board.getRowSize();</span>
+<span class="fc" id="L151">        int colSize = board.getColSize();</span>
+<span class="fc" id="L152">        int rowSize = board.getRowSize();</span>
 
-<span class="fc" id="L146">        boolean input1 = false;</span>
-<span class="fc" id="L147">        boolean input2 = false;</span>
-<span class="fc" id="L148">        boolean valid = true;</span>
-
-
-<span class="fc" id="L151">        Scanner reader = new Scanner(System.in);</span>
+<span class="fc" id="L154">        boolean input1 = false;</span>
+<span class="fc" id="L155">        boolean input2 = false;</span>
+<span class="fc" id="L156">        boolean valid = true;</span>
 
 
-<span class="fc bfc" id="L154" title="All 2 branches covered.">        while(!input1){</span>
-<span class="fc" id="L155">            System.out.println(&quot;What is the row coordinate?&quot;);</span>
-<span class="fc" id="L156">            String input = reader.next();</span>
+<span class="fc" id="L159">        Scanner reader = new Scanner(System.in);</span>
 
-            try {
-<span class="fc" id="L159">                cR = Integer.parseInt(input);</span>
-<span class="fc" id="L160">                input1 = true;</span>
-<span class="fc" id="L161">            } catch (NumberFormatException ignored) {</span>
-<span class="fc" id="L162">            }</span>
 
-<span class="pc bpc" id="L164" title="2 of 6 branches missed.">            if(!input1 || cR&lt;0 || cR&gt;=rowSize){</span>
-<span class="fc" id="L165">                System.out.println(&quot;Invalid input, please enter a valid coordinate\n&quot;);</span>
-<span class="fc" id="L166">                input1 = false;</span>
-            }
-<span class="fc" id="L168">        }</span>
-<span class="fc bfc" id="L169" title="All 2 branches covered.">        while(!input2){</span>
-<span class="fc" id="L170">            System.out.println(&quot;What is the column coordinate?&quot;);</span>
-<span class="fc" id="L171">            String input = reader.next();</span>
+<span class="fc bfc" id="L162" title="All 2 branches covered.">        while(!input1){</span>
+<span class="fc" id="L163">            System.out.println(&quot;What is the row coordinate?&quot;);</span>
+<span class="fc" id="L164">            String input = reader.next();</span>
 
             try {
-<span class="fc" id="L174">                cC = Integer.parseInt(input);</span>
-<span class="fc" id="L175">                input2 = true;</span>
-<span class="fc" id="L176">            } catch (NumberFormatException ignored) {</span>
-<span class="fc" id="L177">            }</span>
+<span class="fc" id="L167">                cR = Integer.parseInt(input);</span>
+<span class="fc" id="L168">                input1 = true;</span>
+<span class="fc" id="L169">            } catch (NumberFormatException ignored) {</span>
+<span class="fc" id="L170">            }</span>
 
-<span class="pc bpc" id="L179" title="2 of 6 branches missed.">            if(!input2 || cC&lt;0 || cC&gt;=colSize){</span>
-<span class="fc" id="L180">                System.out.println(&quot;Invalid input, please enter a valid coordinate\n&quot;);</span>
-<span class="fc" id="L181">                input2 = false;</span>
+<span class="pc bpc" id="L172" title="2 of 6 branches missed.">            if(!input1 || cR&lt;0 || cR&gt;=rowSize){</span>
+<span class="fc" id="L173">                System.out.println(&quot;Invalid input, please enter a valid coordinate\n&quot;);</span>
+<span class="fc" id="L174">                input1 = false;</span>
             }
-<span class="fc" id="L183">        }</span>
-<span class="fc" id="L184">        coordinates[0] = cR;</span>
-<span class="fc" id="L185">        coordinates[1] = cC;</span>
-<span class="fc" id="L186">        return coordinates;</span>
+<span class="fc" id="L176">        }</span>
+<span class="fc bfc" id="L177" title="All 2 branches covered.">        while(!input2){</span>
+<span class="fc" id="L178">            System.out.println(&quot;What is the column coordinate?&quot;);</span>
+<span class="fc" id="L179">            String input = reader.next();</span>
+
+            try {
+<span class="fc" id="L182">                cC = Integer.parseInt(input);</span>
+<span class="fc" id="L183">                input2 = true;</span>
+<span class="fc" id="L184">            } catch (NumberFormatException ignored) {</span>
+<span class="fc" id="L185">            }</span>
+
+<span class="pc bpc" id="L187" title="2 of 6 branches missed.">            if(!input2 || cC&lt;0 || cC&gt;=colSize){</span>
+<span class="fc" id="L188">                System.out.println(&quot;Invalid input, please enter a valid coordinate\n&quot;);</span>
+<span class="fc" id="L189">                input2 = false;</span>
+            }
+<span class="fc" id="L191">        }</span>
+<span class="fc" id="L192">        coordinates[0] = cR;</span>
+<span class="fc" id="L193">        coordinates[1] = cC;</span>
+<span class="fc" id="L194">        return coordinates;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

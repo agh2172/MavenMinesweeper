@@ -89,10 +89,27 @@ public class Main {
     }
 
     public static void get_move(Game minesweeper){
+        boolean[] vals = getMoveType();
+        boolean placeFlag = vals[0];
+        boolean place = vals[1];
+        boolean cleanTile = vals[2];
+        int[] coordinates = new int[2];
+        coordinates = coordinates(minesweeper);
+
+        if(placeFlag){
+            minesweeper.placeFlag(coordinates[0], coordinates[1], place);
+        } else if (cleanTile) {
+            minesweeper.updateBoardClick(coordinates[0], coordinates[1]);
+        }
+
+    }
+
+    public static boolean[] getMoveType(){
         boolean readMove = false;
         boolean placeFlag = false;
         boolean place = false;
         boolean cleanTile = false;
+
         //Ask if they want to click or place a flag
         //Then either way use the coordinates method to get the coordinates
         while(!readMove){
@@ -119,16 +136,7 @@ public class Main {
                 System.out.println("Invalid input, please try again");
             }
         }
-
-        int[] coordinates = new int[2];
-        coordinates = coordinates(minesweeper);
-
-        if(placeFlag){
-            minesweeper.placeFlag(coordinates[0], coordinates[1], place);
-        } else if (cleanTile) {
-            minesweeper.updateBoardClick(coordinates[0], coordinates[1]);
-        }
-
+        return new boolean[]{placeFlag, place, cleanTile};
     }
 
 
