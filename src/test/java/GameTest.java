@@ -170,6 +170,20 @@ public class GameTest {
         boolean cleanTile = vals[2];
 
         Assertions.assertTrue(placeFlag, "should be placeFlag true");
+
+        provideInput("c\n");
+        vals = Main.getMoveType();
+        placeFlag = vals[0];
+        place = vals[1];
+        cleanTile = vals[2];
+        Assertions.assertTrue(cleanTile, "should be cleanTile true");
+
+        provideInput("r\n");
+        vals = Main.getMoveType();
+        placeFlag = vals[0];
+        place = vals[1];
+        cleanTile = vals[2];
+        Assertions.assertFalse(place, "should be place false");
     }
 /*    @Test
     public void testInput(){

@@ -120,18 +120,18 @@ import java.util.Scanner;
                     &quot;Enter r or remove to remove a flag&quot;);
 <span class="fc" id="L121">            String input = reader.next();</span>
 <span class="fc" id="L122">            input = input.toLowerCase().trim();</span>
-<span class="pc bpc" id="L123" title="2 of 4 branches missed.">            if(input.equals(&quot;flag&quot;)||input.equals(&quot;f&quot;)){</span>
+<span class="pc bpc" id="L123" title="1 of 4 branches missed.">            if(input.equals(&quot;flag&quot;)||input.equals(&quot;f&quot;)){</span>
                 //place flag
 <span class="fc" id="L125">                placeFlag =true;</span>
 <span class="fc" id="L126">                readMove = true;</span>
 <span class="fc" id="L127">                place = true;</span>
-<span class="nc bnc" id="L128" title="All 4 branches missed.">            } else if (input.equals(&quot;clean&quot;)||input.equals(&quot;c&quot;)) {</span>
+<span class="pc bpc" id="L128" title="1 of 4 branches missed.">            } else if (input.equals(&quot;clean&quot;)||input.equals(&quot;c&quot;)) {</span>
                 //clean tile
-<span class="nc" id="L130">                cleanTile =true;</span>
-<span class="nc" id="L131">                readMove = true;</span>
-<span class="nc bnc" id="L132" title="All 4 branches missed.">            } else if (input.equals(&quot;remove&quot;)||input.equals(&quot;r&quot;)) {</span>
-<span class="nc" id="L133">                placeFlag=true;</span>
-<span class="nc" id="L134">                readMove = true;</span>
+<span class="fc" id="L130">                cleanTile =true;</span>
+<span class="fc" id="L131">                readMove = true;</span>
+<span class="pc bpc" id="L132" title="2 of 4 branches missed.">            } else if (input.equals(&quot;remove&quot;)||input.equals(&quot;r&quot;)) {</span>
+<span class="fc" id="L133">                placeFlag=true;</span>
+<span class="fc" id="L134">                readMove = true;</span>
             }else{
 <span class="nc" id="L136">                System.out.println(&quot;Invalid input, please try again&quot;);</span>
             }
