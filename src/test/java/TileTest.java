@@ -29,8 +29,6 @@ public class TileTest {
         Assertions.assertEquals("5", temp.toString(), "wrong string returned");
         temp.setCount(0);
         Assertions.assertEquals(" ", temp.toString(), "wrong string returned");
-
-
     }
 
 

@@ -11,9 +11,6 @@ public class Game {
     private Tile[][] easyBoard = new Tile[9][9];
     private Tile[][] mediumBoard = new Tile[16][16];
     private Tile[][] hardBoard = new Tile[30][16];
-
-    private ArrayList<Tile> revealed = new ArrayList<Tile>();
-
     private int rowSize, colSize;
 
     private int mines;
