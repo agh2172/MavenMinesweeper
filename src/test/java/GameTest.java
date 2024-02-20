@@ -63,6 +63,8 @@ public class GameTest {
         game1.setTile(0,0, true);
         game1.placeFlag(0,0, true);
         Assertions.assertEquals(-1, game1.updateBoardClick(0,0), "should not be able to click on a bomb");
+        Assertions.assertEquals(1, game1.expand(game1.getTile(0,0)), "expand should return 1 for flag");
+
         game1.updateBoardClick(0,1);
         Assertions.assertFalse(game1.isLost(), "lost should be false");
         Assertions.assertTrue(game1.isGameOver(), "game should be over");
