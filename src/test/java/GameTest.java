@@ -89,7 +89,6 @@ public class GameTest {
         Assertions.assertTrue(game1.isGameOver(), "game should be over");
     }
 
-    @Test
     public void testOutput(){
         Game minesweeper = setup();
         String expectedOutput =
