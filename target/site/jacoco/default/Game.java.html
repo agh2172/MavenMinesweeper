@@ -77,11 +77,11 @@ public class Game {
 
     //return true if successful, false otherwise
     public boolean placeFlag(int r, int c, boolean place){
-<span class="nc bnc" id="L80" title="All 2 branches missed.">        if(gameBoard[r][c].isShow()){</span>
-<span class="nc" id="L81">            return false;</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        if(gameBoard[r][c].isShow()){</span>
+<span class="fc" id="L81">            return false;</span>
         }else{
-<span class="nc" id="L83">            gameBoard[r][c].setFlag(place);</span>
-<span class="nc" id="L84">            return true;</span>
+<span class="fc" id="L83">            gameBoard[r][c].setFlag(place);</span>
+<span class="fc" id="L84">            return true;</span>
         }
     }
 
@@ -212,10 +212,10 @@ public class Game {
 <span class="fc" id="L212">            surrounding.add(gameBoard[rowL-2][0]);</span>
 <span class="fc" id="L213">            surrounding.add(gameBoard[rowL-2][1]);</span>
 <span class="fc" id="L214">            surrounding.add(gameBoard[rowL-1][1]);</span>
-<span class="fc bfc" id="L215" title="All 4 branches covered.">        } else if (topRow&amp;&amp;lastColumn){</span>
-<span class="fc" id="L216">            surrounding.add(gameBoard[rowL-2][colL-2]);</span>
-<span class="fc" id="L217">            surrounding.add(gameBoard[rowL-1][colL-2]);</span>
-<span class="fc" id="L218">            surrounding.add(gameBoard[rowL-2][colL-1]);</span>
+<span class="pc bpc" id="L215" title="1 of 4 branches missed.">        } else if (topRow&amp;&amp;lastColumn){</span>
+<span class="nc" id="L216">            surrounding.add(gameBoard[rowL-2][colL-2]);</span>
+<span class="nc" id="L217">            surrounding.add(gameBoard[rowL-1][colL-2]);</span>
+<span class="nc" id="L218">            surrounding.add(gameBoard[rowL-2][colL-1]);</span>
 <span class="fc bfc" id="L219" title="All 2 branches covered.">        } else if(topRow){</span>
             //first those in the same row
 <span class="fc" id="L221">            surrounding.add(gameBoard[r][c-1]);</span>
