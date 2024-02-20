@@ -37,7 +37,11 @@ public class Main {
             minesweeper.printBoard();
         }
         //Upon exit, game is over
+        endGame(minesweeper);
 
+    }
+
+    public static void endGame(Game minesweeper){
         //They lost
         if(minesweeper.isLost()){
             //minesweeper.printBoard();

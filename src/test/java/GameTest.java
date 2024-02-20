@@ -132,6 +132,17 @@ public class GameTest {
         Assertions.assertEquals("easy", diff, "should be default");
     }
 
+    @Test
+    public void testEndGameState(){
+        Game minesweeper = setup();
+        //win game scenario
+        minesweeper.updateBoardClick(0,0);
+        Assertions.assertTrue(minesweeper.isGameOver(), "game should be over");
+        String expectedOutput = "[4;32mCONGRATULATIONS, you have cleared the minefield!";
+        Main.endGame(minesweeper);
+        Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString().trim(), "should be the same output");
+    }
+
 /*    @Test
     public void testInput(){
         Game minesweeper = new Game(1);
