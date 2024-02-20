@@ -43,11 +43,11 @@ import java.util.Scanner;
 
     public static boolean endGame(Game minesweeper){
         //They lost
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if(minesweeper.isLost()){</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        if(minesweeper.isLost()){</span>
             //minesweeper.printBoard();
-<span class="nc" id="L48">            System.out.print(&quot;\033[1;31m&quot;);</span>
-<span class="nc" id="L49">            System.out.println(&quot;GAME OVER&quot;);</span>
-<span class="nc" id="L50">            return false;</span>
+<span class="fc" id="L48">            System.out.print(&quot;\033[1;31m&quot;);</span>
+<span class="fc" id="L49">            System.out.println(&quot;GAME OVER&quot;);</span>
+<span class="fc" id="L50">            return false;</span>
         }else{ //or they won
 <span class="fc" id="L52">            System.out.print(&quot;\033[4;32m&quot;);</span>
 <span class="fc" id="L53">            System.out.println(&quot;CONGRATULATIONS, you have cleared the minefield!&quot;);</span>

@@ -142,6 +142,14 @@ public class GameTest {
         boolean won = Main.endGame(minesweeper);
         Assertions.assertTrue(won, "should be won");
         //Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString().trim(), "should be the same output");
+
+        minesweeper = setup();
+        minesweeper.getTile(0,0).setMine(true);
+        minesweeper.updateBoardClick(0,0);
+        Assertions.assertTrue(minesweeper.isGameOver(), "game should be lost");
+        won = Main.endGame(minesweeper);
+        Assertions.assertFalse(won, "should be won");
+
     }
 
 /*    @Test
