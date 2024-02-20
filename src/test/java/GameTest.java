@@ -113,7 +113,7 @@ public class GameTest {
     public void testOutput(){
         Game minesweeper = setup();
         String expectedOutput =
-                "    |    0    |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |\n" +
+                "|    0    |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |\n" +
                 "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
                 "  0 |        -|        -|        -|        -|        -|        -|        -|        -|        -|\n" +
                 "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
@@ -134,6 +134,6 @@ public class GameTest {
                 "  8 |        -|        -|        -|        -|        -|        -|        -|        -|        -|";
 
         minesweeper.printBoard();
-        Assertions.assertEquals(outputStreamCaptor.toString().trim(), expectedOutput.trim(), "should be the same output");
+        Assertions.assertEquals(outputStreamCaptor.toString().trim(), expectedOutput, "should be the same output");
     }
 }
