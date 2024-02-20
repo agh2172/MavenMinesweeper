@@ -2,18 +2,15 @@
 
 public class Game {
 
-<span class="nc" id="L5">    private boolean gameOver = false;</span>
+<span class="fc" id="L5">    private boolean gameOver = false;</span>
 
-<span class="nc" id="L7">    private boolean lost = false;</span>
-<span class="nc" id="L8">    private boolean won = false;</span>
-<span class="nc" id="L9">    private Tile[][] testBoard = new Tile[5][5];</span>
+<span class="fc" id="L7">    private boolean lost = false;</span>
+<span class="fc" id="L8">    private boolean won = false;</span>
+<span class="fc" id="L9">    private Tile[][] testBoard = new Tile[5][5];</span>
 
-<span class="nc" id="L11">    private Tile[][] easyBoard = new Tile[9][9];</span>
-<span class="nc" id="L12">    private Tile[][] mediumBoard = new Tile[16][16];</span>
-<span class="nc" id="L13">    private Tile[][] hardBoard = new Tile[30][16];</span>
-
-<span class="nc" id="L15">    private ArrayList&lt;Tile&gt; revealed = new ArrayList&lt;Tile&gt;();</span>
-
+<span class="fc" id="L11">    private Tile[][] easyBoard = new Tile[9][9];</span>
+<span class="fc" id="L12">    private Tile[][] mediumBoard = new Tile[16][16];</span>
+<span class="fc" id="L13">    private Tile[][] hardBoard = new Tile[30][16];</span>
     private int rowSize, colSize;
 
     private int mines;
@@ -22,295 +19,295 @@ public class Game {
     private Tile[][] gameBoard;
 
     //d1 = easy, d2=medium, d3=jard
-<span class="nc" id="L25">    public Game(int difficulty) {</span>
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        if(difficulty==-1){</span>
-<span class="nc" id="L27">            gameBoard = testBoard;</span>
-<span class="nc" id="L28">            mines=2;</span>
-<span class="nc bnc" id="L29" title="All 2 branches missed.">        }else if(difficulty==1) {</span>
-<span class="nc" id="L30">            gameBoard = easyBoard;</span>
-<span class="nc" id="L31">            mines=10;</span>
-<span class="nc bnc" id="L32" title="All 2 branches missed.">        } else if (difficulty==2) {</span>
-<span class="nc" id="L33">            gameBoard = mediumBoard;</span>
-<span class="nc" id="L34">            mines=40;</span>
+<span class="fc" id="L22">    public Game(int difficulty) {</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if(difficulty==-1){</span>
+<span class="fc" id="L24">            gameBoard = testBoard;</span>
+<span class="fc" id="L25">            mines=2;</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        }else if(difficulty==1) {</span>
+<span class="fc" id="L27">            gameBoard = easyBoard;</span>
+<span class="fc" id="L28">            mines=10;</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        } else if (difficulty==2) {</span>
+<span class="fc" id="L30">            gameBoard = mediumBoard;</span>
+<span class="fc" id="L31">            mines=40;</span>
         } else {
-<span class="nc" id="L36">            gameBoard = hardBoard;</span>
-<span class="nc" id="L37">            mines=99;</span>
+<span class="fc" id="L33">            gameBoard = hardBoard;</span>
+<span class="fc" id="L34">            mines=99;</span>
         }
-<span class="nc" id="L39">        colSize=gameBoard[0].length;</span>
-<span class="nc" id="L40">        rowSize=gameBoard.length;</span>
-<span class="nc" id="L41">    }</span>
+<span class="fc" id="L36">        colSize=gameBoard[0].length;</span>
+<span class="fc" id="L37">        rowSize=gameBoard.length;</span>
+<span class="fc" id="L38">    }</span>
 
     public Tile getTile(int r, int c){
-<span class="nc" id="L44">        return gameBoard[r][c];</span>
+<span class="fc" id="L41">        return gameBoard[r][c];</span>
     }
 
     //Upon first move, initialise board
     public void initialiseBoard(int r, int c){
-<span class="nc" id="L49">        int mineCount=0;</span>
-<span class="nc" id="L50">        double threshold = (double) mines /(gameBoard.length*gameBoard[0].length);</span>
+<span class="fc" id="L46">        int mineCount=0;</span>
+<span class="fc" id="L47">        double threshold = (double) mines /(gameBoard.length*gameBoard[0].length);</span>
         //System.out.println(&quot;Threshold: &quot; + threshold);
-<span class="nc" id="L52">        boolean mine = false;</span>
-<span class="nc" id="L53">        double random = 0;</span>
-<span class="nc bnc" id="L54" title="All 2 branches missed.">        for (int i = 0; i &lt; gameBoard.length; i++) {</span>
-<span class="nc bnc" id="L55" title="All 2 branches missed.">            for (int j = 0; j &lt; gameBoard[i].length; j++) {</span>
-<span class="nc" id="L56">                mine=false;</span>
-<span class="nc bnc" id="L57" title="All 6 branches missed.">                if(mineCount&lt;mines &amp;&amp; (i!=r &amp;&amp; j!=c)){</span>
+<span class="fc" id="L49">        boolean mine = false;</span>
+<span class="fc" id="L50">        double random = 0;</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        for (int i = 0; i &lt; gameBoard.length; i++) {</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            for (int j = 0; j &lt; gameBoard[i].length; j++) {</span>
+<span class="fc" id="L53">                mine=false;</span>
+<span class="pc bpc" id="L54" title="1 of 6 branches missed.">                if(mineCount&lt;mines &amp;&amp; (i!=r &amp;&amp; j!=c)){</span>
                     //could be a new mine
-<span class="nc" id="L59">                    random = Math.random();</span>
+<span class="fc" id="L56">                    random = Math.random();</span>
                     //System.out.println(&quot;Random: &quot; + random);
-<span class="nc bnc" id="L61" title="All 2 branches missed.">                    if(random&lt;threshold){</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">                    if(random&lt;threshold){</span>
                         //System.out.println(&quot;True&quot;);
-<span class="nc" id="L63">                        mine=true;</span>
-<span class="nc" id="L64">                        mines++;</span>
+<span class="fc" id="L60">                        mine=true;</span>
+<span class="fc" id="L61">                        mines++;</span>
                     }
                 }
-<span class="nc" id="L67">                gameBoard[i][j] = new Tile(mine, i, j);</span>
+<span class="fc" id="L64">                gameBoard[i][j] = new Tile(mine, i, j);</span>
                 //gameBoard[i][j].setShow(true);
             }
         }
-<span class="nc" id="L71">        ArrayList&lt;Tile&gt; neighbours = new ArrayList&lt;Tile&gt;();</span>
-<span class="nc" id="L72">        getNeighbours(r, c, neighbours);</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        for(Tile neighbour: neighbours){</span>
-<span class="nc" id="L74">            neighbour.setMine(false);</span>
-<span class="nc" id="L75">        }</span>
-<span class="nc" id="L76">        iniitialiseCounts();</span>
-<span class="nc" id="L77">        updateBoardClick(r, c);</span>
-<span class="nc" id="L78">    }</span>
+<span class="fc" id="L68">        ArrayList&lt;Tile&gt; neighbours = new ArrayList&lt;Tile&gt;();</span>
+<span class="fc" id="L69">        getNeighbours(r, c, neighbours);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        for(Tile neighbour: neighbours){</span>
+<span class="fc" id="L71">            neighbour.setMine(false);</span>
+<span class="fc" id="L72">        }</span>
+<span class="fc" id="L73">        iniitialiseCounts();</span>
+<span class="fc" id="L74">        updateBoardClick(r, c);</span>
+<span class="fc" id="L75">    }</span>
 
 
     //return true if successful, false otherwise
     public boolean placeFlag(int r, int c, boolean place){
-<span class="nc bnc" id="L83" title="All 2 branches missed.">        if(gameBoard[r][c].isShow()){</span>
-<span class="nc" id="L84">            return false;</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        if(gameBoard[r][c].isShow()){</span>
+<span class="nc" id="L81">            return false;</span>
         }else{
-<span class="nc" id="L86">            gameBoard[r][c].setFlag(place);</span>
-<span class="nc" id="L87">            return true;</span>
+<span class="nc" id="L83">            gameBoard[r][c].setFlag(place);</span>
+<span class="nc" id="L84">            return true;</span>
         }
     }
 
     //reveal new numbers/empty spaces
     public int updateBoardClick(int r, int c){
         //first check if it's a bomb
-<span class="nc bnc" id="L94" title="All 2 branches missed.">        if(gameBoard[r][c].isMine()){</span>
-<span class="nc bnc" id="L95" title="All 2 branches missed.">            if(gameBoard[r][c].isFlag()){</span>
-<span class="nc" id="L96">                return -1;</span>
+<span class="pc bpc" id="L91" title="1 of 2 branches missed.">        if(gameBoard[r][c].isMine()){</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">            if(gameBoard[r][c].isFlag()){</span>
+<span class="nc" id="L93">                return -1;</span>
             }
-<span class="nc" id="L98">            lost = true;</span>
-<span class="nc" id="L99">            gameOver();</span>
-<span class="nc" id="L100">            return -1;</span>
+<span class="nc" id="L95">            lost = true;</span>
+<span class="nc" id="L96">            gameOver();</span>
+<span class="nc" id="L97">            return -1;</span>
         }else{
-<span class="nc" id="L102">            gameBoard[r][c].setShow(true);</span>
-<span class="nc" id="L103">            ArrayList&lt;Tile&gt; neighbours = new ArrayList&lt;Tile&gt;();</span>
-<span class="nc" id="L104">            getNeighbours(r, c, neighbours);</span>
-<span class="nc bnc" id="L105" title="All 2 branches missed.">            for(Tile neighbour:neighbours){</span>
-<span class="nc" id="L106">                int temp = expand(neighbour);</span>
-<span class="nc" id="L107">            }</span>
+<span class="fc" id="L99">            gameBoard[r][c].setShow(true);</span>
+<span class="fc" id="L100">            ArrayList&lt;Tile&gt; neighbours = new ArrayList&lt;Tile&gt;();</span>
+<span class="fc" id="L101">            getNeighbours(r, c, neighbours);</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">            for(Tile neighbour:neighbours){</span>
+<span class="fc" id="L103">                int temp = expand(neighbour);</span>
+<span class="fc" id="L104">            }</span>
         }
         //check if they won
-<span class="nc" id="L110">        won = checkWin();</span>
-<span class="nc bnc" id="L111" title="All 2 branches missed.">        if(won) gameOver=true;</span>
-<span class="nc" id="L112">        return 0;</span>
+<span class="fc" id="L107">        won = checkWin();</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">        if(won) gameOver=true;</span>
+<span class="fc" id="L109">        return 0;</span>
     }
 
     //expand on the tile
     public int expand(Tile tile){
-<span class="nc bnc" id="L117" title="All 2 branches missed.">        if(tile.isShow()){</span>
-<span class="nc" id="L118">            return 1;</span>
-<span class="nc bnc" id="L119" title="All 2 branches missed.">        }else if(tile.isMine()){</span>
-<span class="nc" id="L120">            return 1;</span>
-<span class="nc bnc" id="L121" title="All 2 branches missed.">        }else if(tile.isFlag()) {</span>
-<span class="nc" id="L122">            return 1;</span>
-<span class="nc bnc" id="L123" title="All 2 branches missed.">        } else if (tile.count&gt;0){</span>
-<span class="nc" id="L124">            tile.setShow(true);</span>
-<span class="nc" id="L125">            return 1;</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">        if(tile.isShow()){</span>
+<span class="fc" id="L115">            return 1;</span>
+<span class="pc bpc" id="L116" title="1 of 2 branches missed.">        }else if(tile.isMine()){</span>
+<span class="nc" id="L117">            return 1;</span>
+<span class="pc bpc" id="L118" title="1 of 2 branches missed.">        }else if(tile.isFlag()) {</span>
+<span class="nc" id="L119">            return 1;</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        } else if (tile.count&gt;0){</span>
+<span class="fc" id="L121">            tile.setShow(true);</span>
+<span class="fc" id="L122">            return 1;</span>
         }else{
             //Expand
-<span class="nc" id="L128">            tile.setShow(true);</span>
-<span class="nc" id="L129">            ArrayList&lt;Tile&gt; neighbours = new ArrayList&lt;Tile&gt;();</span>
-<span class="nc" id="L130">            getNeighbours(tile.getRow(), tile.getCol(), neighbours);</span>
-<span class="nc bnc" id="L131" title="All 2 branches missed.">            for(Tile neighbour : neighbours){</span>
-<span class="nc" id="L132">                expand(neighbour);</span>
-<span class="nc" id="L133">            }</span>
+<span class="fc" id="L125">            tile.setShow(true);</span>
+<span class="fc" id="L126">            ArrayList&lt;Tile&gt; neighbours = new ArrayList&lt;Tile&gt;();</span>
+<span class="fc" id="L127">            getNeighbours(tile.getRow(), tile.getCol(), neighbours);</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">            for(Tile neighbour : neighbours){</span>
+<span class="fc" id="L129">                expand(neighbour);</span>
+<span class="fc" id="L130">            }</span>
         }
-<span class="nc" id="L135">        return -1;</span>
+<span class="fc" id="L132">        return -1;</span>
     }
 
     //Game over! set all squares to x or something - specifically for a loss
     public void gameOver(){
-<span class="nc" id="L140">        gameOver = true;</span>
-<span class="nc bnc" id="L141" title="All 2 branches missed.">        for (int i=0; i&lt; rowSize; i++){</span>
-<span class="nc bnc" id="L142" title="All 2 branches missed.">            for (int j=0; j&lt; colSize; j++){</span>
-<span class="nc" id="L143">                gameBoard[i][j].setMine(true);</span>
-<span class="nc" id="L144">                System.out.print(&quot;\033[1;31m&quot;);</span>
-<span class="nc" id="L145">                gameBoard[i][j].setShow(true);</span>
+<span class="nc" id="L137">        gameOver = true;</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        for (int i=0; i&lt; rowSize; i++){</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">            for (int j=0; j&lt; colSize; j++){</span>
+<span class="nc" id="L140">                gameBoard[i][j].setMine(true);</span>
+<span class="nc" id="L141">                System.out.print(&quot;\033[1;31m&quot;);</span>
+<span class="nc" id="L142">                gameBoard[i][j].setShow(true);</span>
             }
         }
-<span class="nc" id="L148">    }</span>
+<span class="nc" id="L145">    }</span>
 
     //method to check if you've w
     //win condition: all safe blocks opened
     public boolean checkWin(){
         Tile temp;
-<span class="nc bnc" id="L154" title="All 2 branches missed.">        for (int i=0; i&lt; rowSize; i++){</span>
-<span class="nc bnc" id="L155" title="All 2 branches missed.">            for (int j=0; j&lt; colSize; j++){</span>
-<span class="nc" id="L156">                temp = gameBoard[i][j];</span>
-<span class="nc bnc" id="L157" title="All 4 branches missed.">                if(!temp.isShow()&amp;&amp;!temp.isMine()){</span>
-<span class="nc" id="L158">                    return false;</span>
+<span class="pc bpc" id="L151" title="1 of 2 branches missed.">        for (int i=0; i&lt; rowSize; i++){</span>
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">            for (int j=0; j&lt; colSize; j++){</span>
+<span class="fc" id="L153">                temp = gameBoard[i][j];</span>
+<span class="pc bpc" id="L154" title="1 of 4 branches missed.">                if(!temp.isShow()&amp;&amp;!temp.isMine()){</span>
+<span class="fc" id="L155">                    return false;</span>
                 }
             }
         }
-<span class="nc" id="L162">        return true;</span>
+<span class="nc" id="L159">        return true;</span>
     }
 
     public void iniitialiseCounts(){
-<span class="nc bnc" id="L166" title="All 2 branches missed.">        for(int i=0; i&lt;gameBoard.length; i++){</span>
-<span class="nc bnc" id="L167" title="All 2 branches missed.">            for(int j=0; j&lt;gameBoard[i].length; j++){</span>
-<span class="nc bnc" id="L168" title="All 2 branches missed.">                if(gameBoard[i][j].isMine()){</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">        for(int i=0; i&lt;gameBoard.length; i++){</span>
+<span class="fc bfc" id="L164" title="All 2 branches covered.">            for(int j=0; j&lt;gameBoard[i].length; j++){</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">                if(gameBoard[i][j].isMine()){</span>
                     //update surrounding tiles with count
-<span class="nc" id="L170">                    ArrayList&lt;Tile&gt; surrounding = new ArrayList&lt;Tile&gt;();</span>
-<span class="nc" id="L171">                    getNeighbours(i, j, surrounding);</span>
-<span class="nc bnc" id="L172" title="All 2 branches missed.">                    for(Tile tile : surrounding){</span>
-<span class="nc" id="L173">                        tile.count++;</span>
-<span class="nc" id="L174">                    }</span>
-<span class="nc" id="L175">                    surrounding.clear();</span>
+<span class="fc" id="L167">                    ArrayList&lt;Tile&gt; surrounding = new ArrayList&lt;Tile&gt;();</span>
+<span class="fc" id="L168">                    getNeighbours(i, j, surrounding);</span>
+<span class="fc bfc" id="L169" title="All 2 branches covered.">                    for(Tile tile : surrounding){</span>
+<span class="fc" id="L170">                        tile.count++;</span>
+<span class="fc" id="L171">                    }</span>
+<span class="fc" id="L172">                    surrounding.clear();</span>
                 }
             }
         }
-<span class="nc" id="L179">    }</span>
+<span class="fc" id="L176">    }</span>
 
     private void getNeighbours(int r, int c, ArrayList&lt;Tile&gt; surrounding){
-<span class="nc" id="L182">        int rowL = gameBoard.length;</span>
-<span class="nc" id="L183">        int colL = gameBoard[0].length;</span>
-<span class="nc" id="L184">        boolean bottomRow = false;</span>
-<span class="nc" id="L185">        boolean topRow = false;</span>
-<span class="nc" id="L186">        boolean firstColumn = false;</span>
-<span class="nc" id="L187">        boolean lastColumn = false;</span>
-<span class="nc bnc" id="L188" title="All 2 branches missed.">        if(r==0){</span>
-<span class="nc" id="L189">            bottomRow=true;</span>
-<span class="nc bnc" id="L190" title="All 2 branches missed.">        } else if (r == rowL-1) {</span>
-<span class="nc" id="L191">            topRow=true;</span>
+<span class="fc" id="L179">        int rowL = gameBoard.length;</span>
+<span class="fc" id="L180">        int colL = gameBoard[0].length;</span>
+<span class="fc" id="L181">        boolean bottomRow = false;</span>
+<span class="fc" id="L182">        boolean topRow = false;</span>
+<span class="fc" id="L183">        boolean firstColumn = false;</span>
+<span class="fc" id="L184">        boolean lastColumn = false;</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">        if(r==0){</span>
+<span class="fc" id="L186">            bottomRow=true;</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">        } else if (r == rowL-1) {</span>
+<span class="fc" id="L188">            topRow=true;</span>
         }
-<span class="nc bnc" id="L193" title="All 2 branches missed.">        if(c==0){</span>
-<span class="nc" id="L194">            firstColumn=true;</span>
-<span class="nc bnc" id="L195" title="All 2 branches missed.">        } else if (c == colL-1) {</span>
-<span class="nc" id="L196">            lastColumn=true;</span>
+<span class="fc bfc" id="L190" title="All 2 branches covered.">        if(c==0){</span>
+<span class="fc" id="L191">            firstColumn=true;</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">        } else if (c == colL-1) {</span>
+<span class="fc" id="L193">            lastColumn=true;</span>
         }
-<span class="nc bnc" id="L198" title="All 4 branches missed.">        if(bottomRow&amp;&amp;firstColumn){</span>
-<span class="nc" id="L199">            surrounding.add(gameBoard[1][1]);</span>
-<span class="nc" id="L200">            surrounding.add(gameBoard[0][1]);</span>
-<span class="nc" id="L201">            surrounding.add(gameBoard[1][0]);</span>
-<span class="nc bnc" id="L202" title="All 4 branches missed.">        } else if (bottomRow&amp;&amp;lastColumn) {</span>
-<span class="nc" id="L203">            surrounding.add(gameBoard[0][colL-2]);</span>
-<span class="nc" id="L204">            surrounding.add(gameBoard[1][colL-2]);</span>
-<span class="nc" id="L205">            surrounding.add(gameBoard[1][colL-1]);</span>
-<span class="nc bnc" id="L206" title="All 2 branches missed.">        } else if (bottomRow) {</span>
+<span class="fc bfc" id="L195" title="All 4 branches covered.">        if(bottomRow&amp;&amp;firstColumn){</span>
+<span class="fc" id="L196">            surrounding.add(gameBoard[1][1]);</span>
+<span class="fc" id="L197">            surrounding.add(gameBoard[0][1]);</span>
+<span class="fc" id="L198">            surrounding.add(gameBoard[1][0]);</span>
+<span class="fc bfc" id="L199" title="All 4 branches covered.">        } else if (bottomRow&amp;&amp;lastColumn) {</span>
+<span class="fc" id="L200">            surrounding.add(gameBoard[0][colL-2]);</span>
+<span class="fc" id="L201">            surrounding.add(gameBoard[1][colL-2]);</span>
+<span class="fc" id="L202">            surrounding.add(gameBoard[1][colL-1]);</span>
+<span class="fc bfc" id="L203" title="All 2 branches covered.">        } else if (bottomRow) {</span>
             //first those in the same row
-<span class="nc" id="L208">            surrounding.add(gameBoard[0][c-1]);</span>
-<span class="nc" id="L209">            surrounding.add(gameBoard[0][c+1]);</span>
+<span class="fc" id="L205">            surrounding.add(gameBoard[0][c-1]);</span>
+<span class="fc" id="L206">            surrounding.add(gameBoard[0][c+1]);</span>
             //then those in the row above
-<span class="nc" id="L211">            surrounding.add(gameBoard[1][c-1]);</span>
-<span class="nc" id="L212">            surrounding.add(gameBoard[1][c+1]);</span>
-<span class="nc" id="L213">            surrounding.add(gameBoard[1][c]);</span>
-<span class="nc bnc" id="L214" title="All 4 branches missed.">        } else if (topRow&amp;&amp;firstColumn){</span>
-<span class="nc" id="L215">            surrounding.add(gameBoard[rowL-2][0]);</span>
-<span class="nc" id="L216">            surrounding.add(gameBoard[rowL-2][1]);</span>
-<span class="nc" id="L217">            surrounding.add(gameBoard[rowL-1][1]);</span>
-<span class="nc bnc" id="L218" title="All 4 branches missed.">        } else if (topRow&amp;&amp;lastColumn){</span>
-<span class="nc" id="L219">            surrounding.add(gameBoard[rowL-2][colL-2]);</span>
-<span class="nc" id="L220">            surrounding.add(gameBoard[rowL-1][colL-2]);</span>
-<span class="nc" id="L221">            surrounding.add(gameBoard[rowL-2][colL-1]);</span>
-<span class="nc bnc" id="L222" title="All 2 branches missed.">        } else if(topRow){</span>
+<span class="fc" id="L208">            surrounding.add(gameBoard[1][c-1]);</span>
+<span class="fc" id="L209">            surrounding.add(gameBoard[1][c+1]);</span>
+<span class="fc" id="L210">            surrounding.add(gameBoard[1][c]);</span>
+<span class="fc bfc" id="L211" title="All 4 branches covered.">        } else if (topRow&amp;&amp;firstColumn){</span>
+<span class="fc" id="L212">            surrounding.add(gameBoard[rowL-2][0]);</span>
+<span class="fc" id="L213">            surrounding.add(gameBoard[rowL-2][1]);</span>
+<span class="fc" id="L214">            surrounding.add(gameBoard[rowL-1][1]);</span>
+<span class="fc bfc" id="L215" title="All 4 branches covered.">        } else if (topRow&amp;&amp;lastColumn){</span>
+<span class="fc" id="L216">            surrounding.add(gameBoard[rowL-2][colL-2]);</span>
+<span class="fc" id="L217">            surrounding.add(gameBoard[rowL-1][colL-2]);</span>
+<span class="fc" id="L218">            surrounding.add(gameBoard[rowL-2][colL-1]);</span>
+<span class="fc bfc" id="L219" title="All 2 branches covered.">        } else if(topRow){</span>
             //first those in the same row
-<span class="nc" id="L224">            surrounding.add(gameBoard[r][c-1]);</span>
-<span class="nc" id="L225">            surrounding.add(gameBoard[r][c+1]);</span>
+<span class="fc" id="L221">            surrounding.add(gameBoard[r][c-1]);</span>
+<span class="fc" id="L222">            surrounding.add(gameBoard[r][c+1]);</span>
             //then those in the row below
-<span class="nc" id="L227">            surrounding.add(gameBoard[r-1][c-1]);</span>
-<span class="nc" id="L228">            surrounding.add(gameBoard[r-1][c+1]);</span>
-<span class="nc" id="L229">            surrounding.add(gameBoard[r-1][c]);</span>
-<span class="nc bnc" id="L230" title="All 2 branches missed.">        } else if (firstColumn){</span>
+<span class="fc" id="L224">            surrounding.add(gameBoard[r-1][c-1]);</span>
+<span class="fc" id="L225">            surrounding.add(gameBoard[r-1][c+1]);</span>
+<span class="fc" id="L226">            surrounding.add(gameBoard[r-1][c]);</span>
+<span class="fc bfc" id="L227" title="All 2 branches covered.">        } else if (firstColumn){</span>
             //first those in the same column
-<span class="nc" id="L232">            surrounding.add(gameBoard[r-1][c]);</span>
-<span class="nc" id="L233">            surrounding.add(gameBoard[r+1][c]);</span>
+<span class="fc" id="L229">            surrounding.add(gameBoard[r-1][c]);</span>
+<span class="fc" id="L230">            surrounding.add(gameBoard[r+1][c]);</span>
             //then those in the column after
-<span class="nc" id="L235">            surrounding.add(gameBoard[r-1][c+1]);</span>
-<span class="nc" id="L236">            surrounding.add(gameBoard[r+1][c+1]);</span>
-<span class="nc" id="L237">            surrounding.add(gameBoard[r][c+1]);</span>
-<span class="nc bnc" id="L238" title="All 2 branches missed.">        } else if (lastColumn){</span>
+<span class="fc" id="L232">            surrounding.add(gameBoard[r-1][c+1]);</span>
+<span class="fc" id="L233">            surrounding.add(gameBoard[r+1][c+1]);</span>
+<span class="fc" id="L234">            surrounding.add(gameBoard[r][c+1]);</span>
+<span class="fc bfc" id="L235" title="All 2 branches covered.">        } else if (lastColumn){</span>
             //first those in the same column
-<span class="nc" id="L240">            surrounding.add(gameBoard[r+1][c]);</span>
-<span class="nc" id="L241">            surrounding.add(gameBoard[r-1][c]);</span>
+<span class="fc" id="L237">            surrounding.add(gameBoard[r+1][c]);</span>
+<span class="fc" id="L238">            surrounding.add(gameBoard[r-1][c]);</span>
             //then those in the column before
-<span class="nc" id="L243">            surrounding.add(gameBoard[r-1][c-1]);</span>
-<span class="nc" id="L244">            surrounding.add(gameBoard[r+1][c-1]);</span>
-<span class="nc" id="L245">            surrounding.add(gameBoard[r][c-1]);</span>
+<span class="fc" id="L240">            surrounding.add(gameBoard[r-1][c-1]);</span>
+<span class="fc" id="L241">            surrounding.add(gameBoard[r+1][c-1]);</span>
+<span class="fc" id="L242">            surrounding.add(gameBoard[r][c-1]);</span>
         } else{
             //add all - should be 8
-<span class="nc" id="L248">            surrounding.add(gameBoard[r-1][c-1]);</span>
-<span class="nc" id="L249">            surrounding.add(gameBoard[r-1][c]);</span>
-<span class="nc" id="L250">            surrounding.add(gameBoard[r-1][c+1]);</span>
+<span class="fc" id="L245">            surrounding.add(gameBoard[r-1][c-1]);</span>
+<span class="fc" id="L246">            surrounding.add(gameBoard[r-1][c]);</span>
+<span class="fc" id="L247">            surrounding.add(gameBoard[r-1][c+1]);</span>
 
-<span class="nc" id="L252">            surrounding.add(gameBoard[r+1][c-1]);</span>
-<span class="nc" id="L253">            surrounding.add(gameBoard[r+1][c]);</span>
-<span class="nc" id="L254">            surrounding.add(gameBoard[r+1][c+1]);</span>
+<span class="fc" id="L249">            surrounding.add(gameBoard[r+1][c-1]);</span>
+<span class="fc" id="L250">            surrounding.add(gameBoard[r+1][c]);</span>
+<span class="fc" id="L251">            surrounding.add(gameBoard[r+1][c+1]);</span>
 
-<span class="nc" id="L256">            surrounding.add(gameBoard[r][c-1]);</span>
-<span class="nc" id="L257">            surrounding.add(gameBoard[r][c+1]);</span>
+<span class="fc" id="L253">            surrounding.add(gameBoard[r][c-1]);</span>
+<span class="fc" id="L254">            surrounding.add(gameBoard[r][c+1]);</span>
         }
-<span class="nc" id="L259">    }</span>
+<span class="fc" id="L256">    }</span>
 
     public void printBoard(){
-<span class="nc" id="L262">        System.out.print(&quot;    |&quot;);</span>
-<span class="nc bnc" id="L263" title="All 2 branches missed.">        for (int i = 0; i &lt; gameBoard[0].length; i++){</span>
-<span class="nc bnc" id="L264" title="All 2 branches missed.">            if(i&lt;10){</span>
-<span class="nc" id="L265">                System.out.print(&quot;    &quot;);</span>
-<span class="nc" id="L266">                System.out.print(i);</span>
-<span class="nc" id="L267">                System.out.print(&quot;    |&quot;);</span>
+<span class="nc" id="L259">        System.out.print(&quot;    |&quot;);</span>
+<span class="nc bnc" id="L260" title="All 2 branches missed.">        for (int i = 0; i &lt; gameBoard[0].length; i++){</span>
+<span class="nc bnc" id="L261" title="All 2 branches missed.">            if(i&lt;10){</span>
+<span class="nc" id="L262">                System.out.print(&quot;    &quot;);</span>
+<span class="nc" id="L263">                System.out.print(i);</span>
+<span class="nc" id="L264">                System.out.print(&quot;    |&quot;);</span>
             }else{
-<span class="nc" id="L269">                System.out.print(&quot;    &quot;);</span>
-<span class="nc" id="L270">                System.out.print(i);</span>
-<span class="nc" id="L271">                System.out.print(&quot;   |&quot;);</span>
+<span class="nc" id="L266">                System.out.print(&quot;    &quot;);</span>
+<span class="nc" id="L267">                System.out.print(i);</span>
+<span class="nc" id="L268">                System.out.print(&quot;   |&quot;);</span>
             }
         }
-<span class="nc" id="L274">        System.out.println();</span>
-<span class="nc bnc" id="L275" title="All 2 branches missed.">        for (int i = 0; i &lt; gameBoard.length; i++){</span>
-<span class="nc" id="L276">            System.out.print(&quot;----+&quot;);</span>
-<span class="nc bnc" id="L277" title="All 2 branches missed.">            for (int j = 0; j &lt; gameBoard[0].length; j++){</span>
-<span class="nc" id="L278">                System.out.print(&quot;---------+&quot;);</span>
+<span class="nc" id="L271">        System.out.println();</span>
+<span class="nc bnc" id="L272" title="All 2 branches missed.">        for (int i = 0; i &lt; gameBoard.length; i++){</span>
+<span class="nc" id="L273">            System.out.print(&quot;----+&quot;);</span>
+<span class="nc bnc" id="L274" title="All 2 branches missed.">            for (int j = 0; j &lt; gameBoard[0].length; j++){</span>
+<span class="nc" id="L275">                System.out.print(&quot;---------+&quot;);</span>
             }
-<span class="nc" id="L280">            System.out.println();</span>
-<span class="nc bnc" id="L281" title="All 2 branches missed.">            if(i&lt;10){</span>
-<span class="nc" id="L282">                System.out.print(&quot;  &quot; + i + &quot; |&quot;);</span>
+<span class="nc" id="L277">            System.out.println();</span>
+<span class="nc bnc" id="L278" title="All 2 branches missed.">            if(i&lt;10){</span>
+<span class="nc" id="L279">                System.out.print(&quot;  &quot; + i + &quot; |&quot;);</span>
             }else{
-<span class="nc" id="L284">                System.out.print(&quot; &quot; + i + &quot; |&quot;);</span>
+<span class="nc" id="L281">                System.out.print(&quot; &quot; + i + &quot; |&quot;);</span>
             }
             //System.out.print(&quot;  &quot; + i + &quot; |&quot;);
-<span class="nc bnc" id="L287" title="All 2 branches missed.">            for (int j = 0; j &lt; gameBoard[0].length; j++){</span>
-<span class="nc" id="L288">                int spaces = 8;</span>
-<span class="nc bnc" id="L289" title="All 2 branches missed.">                for (int k = 0; k &lt; spaces; k++){</span>
-<span class="nc" id="L290">                    System.out.print(&quot; &quot;);</span>
+<span class="nc bnc" id="L284" title="All 2 branches missed.">            for (int j = 0; j &lt; gameBoard[0].length; j++){</span>
+<span class="nc" id="L285">                int spaces = 8;</span>
+<span class="nc bnc" id="L286" title="All 2 branches missed.">                for (int k = 0; k &lt; spaces; k++){</span>
+<span class="nc" id="L287">                    System.out.print(&quot; &quot;);</span>
                 }
-<span class="nc" id="L292">                System.out.print(gameBoard[i][j]);</span>
-<span class="nc" id="L293">                System.out.print(&quot;|&quot;);</span>
+<span class="nc" id="L289">                System.out.print(gameBoard[i][j]);</span>
+<span class="nc" id="L290">                System.out.print(&quot;|&quot;);</span>
             }
-<span class="nc" id="L295">            System.out.println();</span>
+<span class="nc" id="L292">            System.out.println();</span>
         }
-<span class="nc" id="L297">    }</span>
+<span class="nc" id="L294">    }</span>
 
 
     public int getRowSize() {
-<span class="nc" id="L301">        return rowSize;</span>
+<span class="fc" id="L298">        return rowSize;</span>
     }
 
     public int getColSize() {
-<span class="nc" id="L305">        return colSize;</span>
+<span class="fc" id="L302">        return colSize;</span>
     }
 
     public boolean isGameOver() {
-<span class="nc" id="L309">        return gameOver;</span>
+<span class="fc" id="L306">        return gameOver;</span>
     }
 
     public boolean isLost() {
-<span class="nc" id="L313">        return lost;</span>
+<span class="fc" id="L310">        return lost;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
