@@ -19,14 +19,15 @@ public class Main {
                 "or 3 for ULTIMATE MINESWEEPER (30x16)");
         String input = reader.next();
         int diff = Integer.parseInt(input);
-
         Game minesweeper =  new Game(diff);
         printIntro(diff);
-        System.out.println("Which coordinates would you like to begin with?");
+
+        /* movedn to separate function System.out.println("Which coordinates would you like to begin with?");
         int[] coordinates = new int[2];
         coordinates = coordinates(minesweeper);
 
-        minesweeper.initialiseBoard(coordinates[0],coordinates[1]);
+        minesweeper.initialiseBoard(coordinates[0],coordinates[1]);*/
+        startGame(minesweeper);
         minesweeper.printBoard();
 
 
@@ -55,6 +56,13 @@ public class Main {
         }
     }
 
+    public static void startGame(Game minesweeper){
+        System.out.println("Which coordinates would you like to begin with?");
+        int[] coordinates = new int[2];
+        coordinates = coordinates(minesweeper);
+
+        minesweeper.initialiseBoard(coordinates[0],coordinates[1]);
+    }
 
     public static String printIntro(int diff){
         String difficulty = "";
@@ -106,7 +114,6 @@ public class Main {
                 readMove = true;
             } else if (input.equals("remove")||input.equals("r")) {
                 placeFlag=true;
-                place=false;
                 readMove = true;
             }else{
                 System.out.println("Invalid input, please try again");
@@ -123,6 +130,7 @@ public class Main {
         }
 
     }
+
 
     //returns int[] with row at [0], and column at [1]
     public static int[] coordinates(Game board){

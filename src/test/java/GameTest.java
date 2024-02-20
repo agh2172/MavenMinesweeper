@@ -152,6 +152,14 @@ public class GameTest {
 
     }
 
+
+    @Test
+    public void testStartGame(){
+        Game minesweeper = new Game(1);
+        provideInput("3\n3\n");
+        Main.startGame(minesweeper);
+        Assertions.assertFalse(minesweeper.getTile(3,3).isMine(), "cannot be mine at start");
+    }
 /*    @Test
     public void testInput(){
         Game minesweeper = new Game(1);
