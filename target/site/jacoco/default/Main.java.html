@@ -140,12 +140,12 @@ import java.util.Scanner;
             try {
 <span class="fc" id="L141">                cR = Integer.parseInt(input);</span>
 <span class="fc" id="L142">                input1 = true;</span>
-<span class="nc" id="L143">            } catch (NumberFormatException ignored) {</span>
+<span class="fc" id="L143">            } catch (NumberFormatException ignored) {</span>
 <span class="fc" id="L144">            }</span>
 
-<span class="pc bpc" id="L146" title="3 of 6 branches missed.">            if(!input1 || cR&lt;0 || cR&gt;=rowSize){</span>
-<span class="nc" id="L147">                System.out.println(&quot;Invalid input, please enter a valid coordinate\n&quot;);</span>
-<span class="nc" id="L148">                input1 = false;</span>
+<span class="pc bpc" id="L146" title="2 of 6 branches missed.">            if(!input1 || cR&lt;0 || cR&gt;=rowSize){</span>
+<span class="fc" id="L147">                System.out.println(&quot;Invalid input, please enter a valid coordinate\n&quot;);</span>
+<span class="fc" id="L148">                input1 = false;</span>
             }
 <span class="fc" id="L150">        }</span>
 <span class="fc bfc" id="L151" title="All 2 branches covered.">        while(!input2){</span>
@@ -155,12 +155,12 @@ import java.util.Scanner;
             try {
 <span class="fc" id="L156">                cC = Integer.parseInt(input);</span>
 <span class="fc" id="L157">                input2 = true;</span>
-<span class="nc" id="L158">            } catch (NumberFormatException ignored) {</span>
+<span class="fc" id="L158">            } catch (NumberFormatException ignored) {</span>
 <span class="fc" id="L159">            }</span>
 
-<span class="pc bpc" id="L161" title="3 of 6 branches missed.">            if(!input2 || cC&lt;0 || cC&gt;=colSize){</span>
-<span class="nc" id="L162">                System.out.println(&quot;Invalid input, please enter a valid coordinate\n&quot;);</span>
-<span class="nc" id="L163">                input2 = false;</span>
+<span class="pc bpc" id="L161" title="2 of 6 branches missed.">            if(!input2 || cC&lt;0 || cC&gt;=colSize){</span>
+<span class="fc" id="L162">                System.out.println(&quot;Invalid input, please enter a valid coordinate\n&quot;);</span>
+<span class="fc" id="L163">                input2 = false;</span>
             }
 <span class="fc" id="L165">        }</span>
 <span class="fc" id="L166">        coordinates[0] = cR;</span>

@@ -101,7 +101,7 @@ public class GameTest {
         Game minesweeper = new Game(1);
 
         int[] coordinates = new int[2];
-        provideInput("0\n0\n");
+        provideInput("a\n0\na\n0\n");
         coordinates = Main.coordinates(minesweeper);
         Assertions.assertEquals(0, coordinates[0], "x should be 0");
         Assertions.assertEquals(0, coordinates[1], "y should be 0");
