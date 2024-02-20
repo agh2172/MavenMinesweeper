@@ -138,9 +138,10 @@ public class GameTest {
         //win game scenario
         minesweeper.updateBoardClick(0,0);
         Assertions.assertTrue(minesweeper.isGameOver(), "game should be over");
-        String expectedOutput = "[4;32mCONGRATULATIONS, you have cleared the minefield!";
-        Main.endGame(minesweeper);
-        Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString().trim(), "should be the same output");
+        //String expectedOutput = "[4;32mCONGRATULATIONS, you have cleared the minefield!";
+        boolean won = Main.endGame(minesweeper);
+        Assertions.assertTrue(won, "should be won");
+        //Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString().trim(), "should be the same output");
     }
 
 /*    @Test

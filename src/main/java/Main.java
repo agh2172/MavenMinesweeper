@@ -41,15 +41,17 @@ public class Main {
 
     }
 
-    public static void endGame(Game minesweeper){
+    public static boolean endGame(Game minesweeper){
         //They lost
         if(minesweeper.isLost()){
             //minesweeper.printBoard();
             System.out.print("\033[1;31m");
             System.out.println("GAME OVER");
+            return false;
         }else{ //or they won
             System.out.print("\033[4;32m");
             System.out.println("CONGRATULATIONS, you have cleared the minefield!");
+            return true;
         }
     }
 
