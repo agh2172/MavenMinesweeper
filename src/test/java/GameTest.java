@@ -3,6 +3,18 @@ import org.junit.jupiter.api.Test;
 
 public class GameTest {
 
+    //setup a predefined board
+    public Game setup(){
+        //sets all up a new game where all tiles are not bombs
+        Game minesweeper = new Game(1);
+        for(int i=0; i<minesweeper.getRowSize(); i++){
+            for(int j=0; j< minesweeper.getColSize(); j++){
+                minesweeper.setTile(i, j, false);
+            }
+        }
+        return minesweeper;
+    }
+
     @Test
     public void testGameInit(){
         Game minesweeper = new Game(1);
@@ -33,6 +45,12 @@ public class GameTest {
 
         Assertions.assertFalse(minesweeper.isGameOver(), "gameOver should be false");
         Assertions.assertFalse(minesweeper.isLost(), "gameLost should be false");
+    }
 
+    @Test
+    public void testGameOver(){
+        Game minesweeper = setup();
+        minesweeper.updateBoardClick(0,0);
+        Assertions.assertTrue(minesweeper.isGameOver(), "game should be over");
     }
 }

@@ -41,6 +41,10 @@ public class Game {
         return gameBoard[r][c];
     }
 
+    public void setTile(int r, int c, boolean isMine){
+        gameBoard[r][c] = new Tile(isMine, r, c);
+    }
+
     //Upon first move, initialise board
     public void initialiseBoard(int r, int c){
         int mineCount=0;
