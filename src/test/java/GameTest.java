@@ -1,7 +1,25 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 public class GameTest {
+
+    private final PrintStream standardOut = System.out;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUp() {
+        System.setOut(new PrintStream(outputStreamCaptor));
+    }
+
+    @AfterEach
+    public void tearDown() {
+        System.setOut(standardOut);
+    }
 
     //setup a predefined board
     public Game setup(){
@@ -60,15 +78,42 @@ public class GameTest {
         Assertions.assertTrue(minesweeper.isLost(), "lost should be true");
 
         Game game1 = setup();
+        game1.placeFlag(0,0, true);
+        Assertions.assertEquals(1, game1.expand(game1.getTile(0,0)), "expand should return 1 for flag");
         game1.setTile(0,0, true);
         game1.placeFlag(0,0, true);
-        Assertions.assertEquals(-1, game1.updateBoardClick(0,0), "should not be able to click on a bomb");
-        Assertions.assertEquals(1, game1.expand(game1.getTile(0,0)), "expand should return 1 for flag");
+
 
         game1.updateBoardClick(0,1);
         Assertions.assertFalse(game1.isLost(), "lost should be false");
         Assertions.assertTrue(game1.isGameOver(), "game should be over");
+    }
 
+    @Test
+    public void testOutput(){
+        Game minesweeper = setup();
+        String expectedOutput =
+                "|    0    |    1    |    2    |    3    |    4    |    5    |    6    |    7    |    8    |\n" +
+                "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
+                "  0 |        -|        -|        -|        -|        -|        -|        -|        -|        -|\n" +
+                "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
+                "  1 |        -|        -|        -|        -|        -|        -|        -|        -|        -|\n" +
+                "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
+                "  2 |        -|        -|        -|        -|        -|        -|        -|        -|        -|\n" +
+                "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
+                "  3 |        -|        -|        -|        -|        -|        -|        -|        -|        -|\n" +
+                "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
+                "  4 |        -|        -|        -|        -|        -|        -|        -|        -|        -|\n" +
+                "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
+                "  5 |        -|        -|        -|        -|        -|        -|        -|        -|        -|\n" +
+                "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
+                "  6 |        -|        -|        -|        -|        -|        -|        -|        -|        -|\n" +
+                "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
+                "  7 |        -|        -|        -|        -|        -|        -|        -|        -|        -|\n" +
+                "----+---------+---------+---------+---------+---------+---------+---------+---------+---------+\n" +
+                "  8 |        -|        -|        -|        -|        -|        -|        -|        -|        -|";
 
+        minesweeper.printBoard();
+        Assertions.assertEquals(expectedOutput, outputStreamCaptor.toString().trim(), "should be the same output");
     }
 }

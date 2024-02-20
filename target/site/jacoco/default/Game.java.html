@@ -93,8 +93,8 @@ public class Game {
     public int updateBoardClick(int r, int c){
         //first check if it's a bomb
 <span class="fc bfc" id="L95" title="All 2 branches covered.">        if(gameBoard[r][c].isMine()){</span>
-<span class="fc bfc" id="L96" title="All 2 branches covered.">            if(gameBoard[r][c].isFlag()){</span>
-<span class="fc" id="L97">                return -1;</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">            if(gameBoard[r][c].isFlag()){</span>
+<span class="nc" id="L97">                return -1;</span>
             }
 <span class="fc" id="L99">            lost = true;</span>
 <span class="fc" id="L100">            gameOver();</span>
@@ -119,8 +119,8 @@ public class Game {
 <span class="fc" id="L119">            return 1;</span>
 <span class="fc bfc" id="L120" title="All 2 branches covered.">        }else if(tile.isMine()){</span>
 <span class="fc" id="L121">            return 1;</span>
-<span class="pc bpc" id="L122" title="1 of 2 branches missed.">        }else if(tile.isFlag()) {</span>
-<span class="nc" id="L123">            return 1;</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        }else if(tile.isFlag()) {</span>
+<span class="fc" id="L123">            return 1;</span>
 <span class="fc bfc" id="L124" title="All 2 branches covered.">        } else if (tile.count&gt;0){</span>
 <span class="fc" id="L125">            tile.setShow(true);</span>
 <span class="fc" id="L126">            return 1;</span>
@@ -260,42 +260,42 @@ public class Game {
 <span class="fc" id="L260">    }</span>
 
     public void printBoard(){
-<span class="nc" id="L263">        System.out.print(&quot;    |&quot;);</span>
-<span class="nc bnc" id="L264" title="All 2 branches missed.">        for (int i = 0; i &lt; gameBoard[0].length; i++){</span>
-<span class="nc bnc" id="L265" title="All 2 branches missed.">            if(i&lt;10){</span>
-<span class="nc" id="L266">                System.out.print(&quot;    &quot;);</span>
-<span class="nc" id="L267">                System.out.print(i);</span>
-<span class="nc" id="L268">                System.out.print(&quot;    |&quot;);</span>
+<span class="fc" id="L263">        System.out.print(&quot;    |&quot;);</span>
+<span class="fc bfc" id="L264" title="All 2 branches covered.">        for (int i = 0; i &lt; gameBoard[0].length; i++){</span>
+<span class="pc bpc" id="L265" title="1 of 2 branches missed.">            if(i&lt;10){</span>
+<span class="fc" id="L266">                System.out.print(&quot;    &quot;);</span>
+<span class="fc" id="L267">                System.out.print(i);</span>
+<span class="fc" id="L268">                System.out.print(&quot;    |&quot;);</span>
             }else{
 <span class="nc" id="L270">                System.out.print(&quot;    &quot;);</span>
 <span class="nc" id="L271">                System.out.print(i);</span>
 <span class="nc" id="L272">                System.out.print(&quot;   |&quot;);</span>
             }
         }
-<span class="nc" id="L275">        System.out.println();</span>
-<span class="nc bnc" id="L276" title="All 2 branches missed.">        for (int i = 0; i &lt; gameBoard.length; i++){</span>
-<span class="nc" id="L277">            System.out.print(&quot;----+&quot;);</span>
-<span class="nc bnc" id="L278" title="All 2 branches missed.">            for (int j = 0; j &lt; gameBoard[0].length; j++){</span>
-<span class="nc" id="L279">                System.out.print(&quot;---------+&quot;);</span>
+<span class="fc" id="L275">        System.out.println();</span>
+<span class="fc bfc" id="L276" title="All 2 branches covered.">        for (int i = 0; i &lt; gameBoard.length; i++){</span>
+<span class="fc" id="L277">            System.out.print(&quot;----+&quot;);</span>
+<span class="fc bfc" id="L278" title="All 2 branches covered.">            for (int j = 0; j &lt; gameBoard[0].length; j++){</span>
+<span class="fc" id="L279">                System.out.print(&quot;---------+&quot;);</span>
             }
-<span class="nc" id="L281">            System.out.println();</span>
-<span class="nc bnc" id="L282" title="All 2 branches missed.">            if(i&lt;10){</span>
-<span class="nc" id="L283">                System.out.print(&quot;  &quot; + i + &quot; |&quot;);</span>
+<span class="fc" id="L281">            System.out.println();</span>
+<span class="pc bpc" id="L282" title="1 of 2 branches missed.">            if(i&lt;10){</span>
+<span class="fc" id="L283">                System.out.print(&quot;  &quot; + i + &quot; |&quot;);</span>
             }else{
 <span class="nc" id="L285">                System.out.print(&quot; &quot; + i + &quot; |&quot;);</span>
             }
             //System.out.print(&quot;  &quot; + i + &quot; |&quot;);
-<span class="nc bnc" id="L288" title="All 2 branches missed.">            for (int j = 0; j &lt; gameBoard[0].length; j++){</span>
-<span class="nc" id="L289">                int spaces = 8;</span>
-<span class="nc bnc" id="L290" title="All 2 branches missed.">                for (int k = 0; k &lt; spaces; k++){</span>
-<span class="nc" id="L291">                    System.out.print(&quot; &quot;);</span>
+<span class="fc bfc" id="L288" title="All 2 branches covered.">            for (int j = 0; j &lt; gameBoard[0].length; j++){</span>
+<span class="fc" id="L289">                int spaces = 8;</span>
+<span class="fc bfc" id="L290" title="All 2 branches covered.">                for (int k = 0; k &lt; spaces; k++){</span>
+<span class="fc" id="L291">                    System.out.print(&quot; &quot;);</span>
                 }
-<span class="nc" id="L293">                System.out.print(gameBoard[i][j]);</span>
-<span class="nc" id="L294">                System.out.print(&quot;|&quot;);</span>
+<span class="fc" id="L293">                System.out.print(gameBoard[i][j]);</span>
+<span class="fc" id="L294">                System.out.print(&quot;|&quot;);</span>
             }
-<span class="nc" id="L296">            System.out.println();</span>
+<span class="fc" id="L296">            System.out.println();</span>
         }
-<span class="nc" id="L298">    }</span>
+<span class="fc" id="L298">    }</span>
 
 
     public int getRowSize() {
