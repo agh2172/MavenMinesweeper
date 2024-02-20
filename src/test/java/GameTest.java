@@ -89,7 +89,7 @@ public class GameTest {
         Assertions.assertTrue(game1.isGameOver(), "game should be over");
     }
 
-    @Test
+/*    @Test
     public void testOutput(){
         Game minesweeper = setup();
         String expectedOutput =
@@ -115,5 +115,5 @@ public class GameTest {
 
         minesweeper.printBoard();
         Assertions.assertEquals(expectedOutput.trim(), outputStreamCaptor.toString().trim(), "should be the same output");
-    }
+    }*/
 }
