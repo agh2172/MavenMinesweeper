@@ -70,6 +70,8 @@ public class Game {
             }
         }
         ArrayList<Tile> neighbours = new ArrayList<Tile>();
+        if(r<0||r>gameBoard.length) r=0;
+        if(c<0||c>gameBoard[0].length) c=0;
         getNeighbours(r, c, neighbours);
         for(Tile neighbour: neighbours){
             neighbour.setMine(false);
