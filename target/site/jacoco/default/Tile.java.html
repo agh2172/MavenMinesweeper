@@ -22,20 +22,20 @@
 <span class="fc" id="L22">    }</span>
 
     public int getCount() {
-<span class="nc" id="L25">        return count;</span>
+<span class="fc" id="L25">        return count;</span>
     }
 
     public void setCount(int count) {
-<span class="nc" id="L29">        this.count = count;</span>
-<span class="nc" id="L30">    }</span>
+<span class="fc" id="L29">        this.count = count;</span>
+<span class="fc" id="L30">    }</span>
 
     public boolean isShow() {
-<span class="nc" id="L33">        return show;</span>
+<span class="fc" id="L33">        return show;</span>
     }
 
     public void setShow(boolean show) {
-<span class="nc" id="L37">        this.show = show;</span>
-<span class="nc" id="L38">    }</span>
+<span class="fc" id="L37">        this.show = show;</span>
+<span class="fc" id="L38">    }</span>
 
 <span class="fc" id="L40">    public Tile(boolean mine, int r, int c){</span>
 <span class="fc" id="L41">        count=0;</span>
@@ -47,14 +47,14 @@
 <span class="fc" id="L47">    }</span>
 
     public String toString(){
-<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        if(isFlag()){</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if(isFlag()){</span>
 <span class="fc" id="L51">            return &quot;⚑&quot;;</span>
         }
-<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(show){</span>
-<span class="nc bnc" id="L54" title="All 2 branches missed.">            if(mine){</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if(show){</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">            if(mine){</span>
 <span class="nc" id="L55">                return &quot;!&quot;;</span>
-<span class="nc bnc" id="L56" title="All 2 branches missed.">            } else if (count&gt;0) {</span>
-<span class="nc" id="L57">                return Integer.toString(count);</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">            } else if (count&gt;0) {</span>
+<span class="fc" id="L57">                return Integer.toString(count);</span>
             }
 <span class="nc" id="L59">            return &quot; &quot;;</span>
         }
@@ -75,15 +75,15 @@
     }
 
     public void setCol(int col) {
-<span class="nc" id="L78">        this.col = col;</span>
-<span class="nc" id="L79">    }</span>
+<span class="fc" id="L78">        this.col = col;</span>
+<span class="fc" id="L79">    }</span>
 
     public int getRow() {
 <span class="fc" id="L82">        return row;</span>
     }
 
     public void setRow(int row) {
-<span class="nc" id="L86">        this.row = row;</span>
-<span class="nc" id="L87">    }</span>
+<span class="fc" id="L86">        this.row = row;</span>
+<span class="fc" id="L87">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
