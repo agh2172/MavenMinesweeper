@@ -134,6 +134,6 @@ public class GameTest {
                 "  8 |        -|        -|        -|        -|        -|        -|        -|        -|        -|";
 
         minesweeper.printBoard();
-        Assertions.assertEquals(expectedOutput.trim(), outputStreamCaptor.toString().trim(), "should be the same output");
+        Assertions.assertEquals(outputStreamCaptor.toString().trim(), expectedOutput.trim(), "should be the same output");
     }
 }
