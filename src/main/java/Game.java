@@ -1,5 +1,3 @@
-import org.example.Tile;
-
 import java.util.ArrayList;
 
 public class Game {

@@ -1,5 +1,3 @@
-package org.example;
-
 public class Tile {
     //is mine or not
     private boolean mine;
