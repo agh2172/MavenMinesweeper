@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Tile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MavenMinesweeper</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Tile.java</span></div><h1>Tile.java</h1><pre class="source lang-java linenums">public class Tile {
+    //is mine or not
+    private boolean mine;
+
+    private int row;
+
+    private int col;
+    private boolean show;
+
+
+    private boolean flag;
+
+    //count of mines bordering
+    public int count;
+
+    public boolean isMine() {
+<span class="fc" id="L17">        return mine;</span>
+    }
+
+    public void setMine(boolean mine) {
+<span class="fc" id="L21">        this.mine = mine;</span>
+<span class="fc" id="L22">    }</span>
+
+    public int getCount() {
+<span class="nc" id="L25">        return count;</span>
+    }
+
+    public void setCount(int count) {
+<span class="nc" id="L29">        this.count = count;</span>
+<span class="nc" id="L30">    }</span>
+
+    public boolean isShow() {
+<span class="nc" id="L33">        return show;</span>
+    }
+
+    public void setShow(boolean show) {
+<span class="nc" id="L37">        this.show = show;</span>
+<span class="nc" id="L38">    }</span>
+
+<span class="fc" id="L40">    public Tile(boolean mine, int r, int c){</span>
+<span class="fc" id="L41">        count=0;</span>
+<span class="fc" id="L42">        show=false;</span>
+<span class="fc" id="L43">        this.mine=mine;</span>
+<span class="fc" id="L44">        flag = false;</span>
+<span class="fc" id="L45">        row = r;</span>
+<span class="fc" id="L46">        col = c;</span>
+<span class="fc" id="L47">    }</span>
+
+    public String toString(){
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">        if(isFlag()){</span>
+<span class="fc" id="L51">            return &quot;⚑&quot;;</span>
+        }
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        if(show){</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">            if(mine){</span>
+<span class="nc" id="L55">                return &quot;!&quot;;</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">            } else if (count&gt;0) {</span>
+<span class="nc" id="L57">                return Integer.toString(count);</span>
+            }
+<span class="nc" id="L59">            return &quot; &quot;;</span>
+        }
+<span class="nc" id="L61">        return &quot;-&quot;;</span>
+    }
+
+
+    public boolean isFlag() {
+<span class="fc" id="L66">        return flag;</span>
+    }
+
+    public void setFlag(boolean flag) {
+<span class="fc" id="L70">        this.flag = flag;</span>
+<span class="fc" id="L71">    }</span>
+
+    public int getCol() {
+<span class="fc" id="L74">        return col;</span>
+    }
+
+    public void setCol(int col) {
+<span class="nc" id="L78">        this.col = col;</span>
+<span class="nc" id="L79">    }</span>
+
+    public int getRow() {
+<span class="fc" id="L82">        return row;</span>
+    }
+
+    public void setRow(int row) {
+<span class="nc" id="L86">        this.row = row;</span>
+<span class="nc" id="L87">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
