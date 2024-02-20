@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -87,6 +88,25 @@ public class GameTest {
         game1.updateBoardClick(0,1);
         Assertions.assertFalse(game1.isLost(), "lost should be false");
         Assertions.assertTrue(game1.isGameOver(), "game should be over");
+    }
+
+
+    void provideInput(String data) {
+        ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
+        System.setIn(testIn);
+    }
+
+    @Test
+    public void testPlay(){
+        Game minesweeper = new Game(1);
+
+        int[] coordinates = new int[2];
+        provideInput("0\n0\n");
+        coordinates = Main.coordinates(minesweeper);
+        Assertions.assertEquals(0, coordinates[0], "x should be 0");
+        Assertions.assertEquals(0, coordinates[1], "y should be 0");
+
+
     }
 
 /*    @Test

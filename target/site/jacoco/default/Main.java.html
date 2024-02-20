@@ -116,56 +116,56 @@ import java.util.Scanner;
 
     //returns int[] with row at [0], and column at [1]
     public static int[] coordinates(Game board){
-<span class="nc" id="L119">        int[] coordinates = new int[2];</span>
+<span class="fc" id="L119">        int[] coordinates = new int[2];</span>
 
         //coordinate Row/Column
-<span class="nc" id="L122">        int cR =-1; //row</span>
-<span class="nc" id="L123">        int cC = -1; //column</span>
+<span class="fc" id="L122">        int cR =-1; //row</span>
+<span class="fc" id="L123">        int cC = -1; //column</span>
 
-<span class="nc" id="L125">        int colSize = board.getColSize();</span>
-<span class="nc" id="L126">        int rowSize = board.getRowSize();</span>
+<span class="fc" id="L125">        int colSize = board.getColSize();</span>
+<span class="fc" id="L126">        int rowSize = board.getRowSize();</span>
 
-<span class="nc" id="L128">        boolean input1 = false;</span>
-<span class="nc" id="L129">        boolean input2 = false;</span>
-<span class="nc" id="L130">        boolean valid = true;</span>
-
-
-<span class="nc" id="L133">        Scanner reader = new Scanner(System.in);</span>
+<span class="fc" id="L128">        boolean input1 = false;</span>
+<span class="fc" id="L129">        boolean input2 = false;</span>
+<span class="fc" id="L130">        boolean valid = true;</span>
 
 
-<span class="nc bnc" id="L136" title="All 2 branches missed.">        while(!input1){</span>
-<span class="nc" id="L137">            System.out.println(&quot;What is the row coordinate?&quot;);</span>
-<span class="nc" id="L138">            String input = reader.next();</span>
+<span class="fc" id="L133">        Scanner reader = new Scanner(System.in);</span>
+
+
+<span class="fc bfc" id="L136" title="All 2 branches covered.">        while(!input1){</span>
+<span class="fc" id="L137">            System.out.println(&quot;What is the row coordinate?&quot;);</span>
+<span class="fc" id="L138">            String input = reader.next();</span>
 
             try {
-<span class="nc" id="L141">                cR = Integer.parseInt(input);</span>
-<span class="nc" id="L142">                input1 = true;</span>
+<span class="fc" id="L141">                cR = Integer.parseInt(input);</span>
+<span class="fc" id="L142">                input1 = true;</span>
 <span class="nc" id="L143">            } catch (NumberFormatException ignored) {</span>
-<span class="nc" id="L144">            }</span>
+<span class="fc" id="L144">            }</span>
 
-<span class="nc bnc" id="L146" title="All 6 branches missed.">            if(!input1 || cR&lt;0 || cR&gt;=rowSize){</span>
+<span class="pc bpc" id="L146" title="3 of 6 branches missed.">            if(!input1 || cR&lt;0 || cR&gt;=rowSize){</span>
 <span class="nc" id="L147">                System.out.println(&quot;Invalid input, please enter a valid coordinate\n&quot;);</span>
 <span class="nc" id="L148">                input1 = false;</span>
             }
-<span class="nc" id="L150">        }</span>
-<span class="nc bnc" id="L151" title="All 2 branches missed.">        while(!input2){</span>
-<span class="nc" id="L152">            System.out.println(&quot;What is the column coordinate?&quot;);</span>
-<span class="nc" id="L153">            String input = reader.next();</span>
+<span class="fc" id="L150">        }</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">        while(!input2){</span>
+<span class="fc" id="L152">            System.out.println(&quot;What is the column coordinate?&quot;);</span>
+<span class="fc" id="L153">            String input = reader.next();</span>
 
             try {
-<span class="nc" id="L156">                cC = Integer.parseInt(input);</span>
-<span class="nc" id="L157">                input2 = true;</span>
+<span class="fc" id="L156">                cC = Integer.parseInt(input);</span>
+<span class="fc" id="L157">                input2 = true;</span>
 <span class="nc" id="L158">            } catch (NumberFormatException ignored) {</span>
-<span class="nc" id="L159">            }</span>
+<span class="fc" id="L159">            }</span>
 
-<span class="nc bnc" id="L161" title="All 6 branches missed.">            if(!input2 || cC&lt;0 || cC&gt;=colSize){</span>
+<span class="pc bpc" id="L161" title="3 of 6 branches missed.">            if(!input2 || cC&lt;0 || cC&gt;=colSize){</span>
 <span class="nc" id="L162">                System.out.println(&quot;Invalid input, please enter a valid coordinate\n&quot;);</span>
 <span class="nc" id="L163">                input2 = false;</span>
             }
-<span class="nc" id="L165">        }</span>
-<span class="nc" id="L166">        coordinates[0] = cR;</span>
-<span class="nc" id="L167">        coordinates[1] = cC;</span>
-<span class="nc" id="L168">        return coordinates;</span>
+<span class="fc" id="L165">        }</span>
+<span class="fc" id="L166">        coordinates[0] = cR;</span>
+<span class="fc" id="L167">        coordinates[1] = cC;</span>
+<span class="fc" id="L168">        return coordinates;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
